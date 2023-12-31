@@ -12,6 +12,7 @@
   margin-top: 48px;
   margin-bottom: 48px;
   width: 85%;
+  max-width: 1100px;
 }
 
 .user-container {
@@ -52,7 +53,98 @@
 }
 
 .money-details-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   list-style-type: none;
   padding-left: 0;
   margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .money-details-list {
+    flex-direction: column;
+  }
+}
+
+.interaction-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .interaction-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.card-heading {
+  color: #1e293b;
+  font-family: 'Roboto';
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid #d7dfe9;
+  border-radius: 12px;
+  height: 470px;
+}
+
+.form {
+  padding: 30px;
+}
+
+.history {
+  padding: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    padding: 30px 50px 30px 50px;
+    width: 40%;
+  }
+
+  .history {
+    width: 55%;
+  }
+}
+
+.labels {
+  color: #cbd5e1;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.inputs {
+  color: #334155;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #d7dfe9;
+  border-radius: 5px;
+  outline: none;
+  padding: 14px 5px 14px 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.add-btn {
+  border: none;
+  border-radius: 8px;
+  background-color: #0b69ff;
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 18px;
+  padding: 8px 24px 8px 24px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

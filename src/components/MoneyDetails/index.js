@@ -7,9 +7,9 @@ const MoneyDetails = props => {
   return (
     <li className={categoryClassName}>
       <img className="details-img" src={imgUrl} alt={category} />
-      <div>
-        <p>{title}</p>
-        <p>{`Rs ${amount}`}</p>
+      <div className="category-content-container">
+        <p className="category-title">{title}</p>
+        <p className="category-amount">{`Rs ${amount}`}</p>
       </div>
     </li>
   )

@@ -24,6 +24,7 @@ const categoriesList = [
     imgUrl:
       'https://assets.ccbp.in/frontend/react-js/money-manager/balance-image.png',
     categoryClassName: 'money-details-item balance-item',
+    attributeValue: 'balanceAmount',
   },
   {
     category: 'income',
@@ -31,6 +32,7 @@ const categoriesList = [
     imgUrl:
       'https://assets.ccbp.in/frontend/react-js/money-manager/income-image.png',
     categoryClassName: 'money-details-item income-item',
+    attributeValue: 'incomeAmount',
   },
   {
     category: 'expenses',
@@ -38,6 +40,7 @@ const categoriesList = [
     imgUrl:
       'https://assets.ccbp.in/frontend/react-js/money-manager/expenses-image.png',
     categoryClassName: 'money-details-item expenses-item',
+    attributeValue: 'expensesAmount',
   },
 ]
 
@@ -81,6 +84,7 @@ class MoneyManager extends Component {
       amount: parseInt(amount),
       type,
     }
+    console.log(newTransaction)
     this.setState(prev => ({
       transactionsList: [...prev.transactionsList, newTransaction],
       title: '',
@@ -91,8 +95,32 @@ class MoneyManager extends Component {
     }))
   }
 
+  onClickDeleteTransaction = id => {
+    const {transactionsList} = this.state
+    const removedTransaction = transactionsList.filter(each => each.id === id)
+    console.log(removedTransaction)
+    let reduceIncome
+    let reduceExpenses
+    if (removedTransaction[0].type === transactionTypeOptions[0].optionId) {
+      reduceIncome = removedTransaction[0].amount
+      reduceExpenses = 0
+    } else {
+      reduceIncome = 0
+      reduceExpenses = removedTransaction[0].amount
+    }
+    const updatedTransactionsList = transactionsList.filter(
+      each => each.id !== id,
+    )
+    this.setState(prev => ({
+      transactionsList: updatedTransactionsList,
+      income: prev.income - reduceIncome,
+      expenses: prev.expenses - reduceExpenses,
+    }))
+  }
+
   render() {
-    const {title, amount, type, income, expenses} = this.state
+    const {title, amount, type, income, expenses, transactionsList} = this.state
+    console.log(income, expenses)
     const money = {
       balance: income - expenses,
       income,
@@ -162,6 +190,20 @@ class MoneyManager extends Component {
             </form>
             <div className="history card">
               <h1 className="card-heading">History</h1>
+              <div className="history-heading-section">
+                <p>Title</p>
+                <p>Amount</p>
+                <p>Type</p>
+              </div>
+              <ul className="transaction-items-list">
+                {transactionsList.map(eachTransaction => (
+                  <TransactionItem
+                    key={eachTransaction.id}
+                    transactionDetails={eachTransaction}
+                    onClickDeleteTransaction={this.onClickDeleteTransaction}
+                  />
+                ))}
+              </ul>
             </div>
           </div>
         </div>

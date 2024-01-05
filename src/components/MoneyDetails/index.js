@@ -10,7 +10,7 @@ const MoneyDetails = props => {
     attributeValue,
   } = moneyDetails
   return (
-    <li className={categoryClassName}>
+    <div className={categoryClassName}>
       <img className="details-img" src={imgUrl} alt={category} />
       <div className="category-content-container">
         <p className="category-title">{title}</p>
@@ -19,7 +19,7 @@ const MoneyDetails = props => {
           className="category-amount"
         >{`Rs ${amount}`}</p>
       </div>
-    </li>
+    </div>
   )
 }
 

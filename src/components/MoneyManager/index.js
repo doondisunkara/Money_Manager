@@ -136,7 +136,7 @@ class MoneyManager extends Component {
               <span className="app-name">Money Manager</span>
             </p>
           </div>
-          <ul className="money-details-list">
+          <div className="money-details-list">
             {categoriesList.map(each => (
               <MoneyDetails
                 key={each.category}
@@ -144,7 +144,7 @@ class MoneyManager extends Component {
                 amount={money[each.category]}
               />
             ))}
-          </ul>
+          </div>
           <div className="interaction-container">
             <form className="form card" onSubmit={this.onSubmitAddTransaction}>
               <h1 className="card-heading">Add Transaction</h1>

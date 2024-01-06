@@ -3,6 +3,7 @@ import './index.css'
 const TransactionItem = props => {
   const {transactionDetails, onClickDeleteTransaction} = props
   const {id, title, amount, type} = transactionDetails
+  const typeDisplay = type === 'INCOME' ? 'Income' : 'Expenses'
   const deleteTransaction = () => {
     onClickDeleteTransaction(id)
   }
@@ -11,7 +12,7 @@ const TransactionItem = props => {
     <li className="transaction-item">
       <p>{title}</p>
       <p>{`Rs ${amount}`}</p>
-      <p>{type}</p>
+      <p>{typeDisplay}</p>
       <button
         data-testid="delete"
         type="button"

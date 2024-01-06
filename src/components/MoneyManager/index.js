@@ -72,10 +72,10 @@ class MoneyManager extends Component {
     let incomeAmt
     let expensesAmt
     if (type === 'INCOME') {
-      incomeAmt = parseInt(amount)
+      incomeAmt = parseInt(amount) + income
       expensesAmt = expenses
     } else {
-      expensesAmt = parseInt(amount)
+      expensesAmt = parseInt(amount) + expenses
       incomeAmt = income
     }
     const newTransaction = {
@@ -138,11 +138,7 @@ class MoneyManager extends Component {
           </div>
           <div className="money-details-list">
             {categoriesList.map(each => (
-              <MoneyDetails
-                key={each.category}
-                moneyDetails={each}
-                amount={money[each.category]}
-              />
+              <MoneyDetails moneyDetails={each} amount={money[each.category]} />
             ))}
           </div>
           <div className="interaction-container">

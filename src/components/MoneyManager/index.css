@@ -98,10 +98,12 @@
 
 .form {
   padding: 30px;
+  height: 468px;
 }
 
 .history {
   padding: 30px;
+  min-height: 468px;
 }
 
 @media screen and (min-width: 768px) {
@@ -149,15 +151,42 @@
   margin-bottom: 10px;
 }
 
-.history-heading-section {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
+.transaction-items-list {
+  padding-left: 0;
+  margin: 0;
+  list-style-type: none;
   width: 100%;
 }
 
-.transaction-items-list {
-  padding-left: 0;
+.history-heading-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 48px;
   list-style-type: none;
-  width: 100%;
+  border: 1px solid #cbd5e1;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .history-heading-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.heading-cell {
+  color: #334155;
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-weight: 500;
+  width: 30%;
+  border-right: none;
+}
+
+@media screen and (min-width: 768px) {
+  .heading-cell {
+    font-size: 16px;
+  }
 }

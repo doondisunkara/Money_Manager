@@ -138,7 +138,11 @@ class MoneyManager extends Component {
           </div>
           <div className="money-details-list">
             {categoriesList.map(each => (
-              <MoneyDetails moneyDetails={each} amount={money[each.category]} />
+              <MoneyDetails
+                key={each.category}
+                moneyDetails={each}
+                amount={money[each.category]}
+              />
             ))}
           </div>
           <div className="interaction-container">
@@ -175,7 +179,7 @@ class MoneyManager extends Component {
                 onChange={this.updateType}
               >
                 {transactionTypeOptions.map(eachType => (
-                  <option value={eachType.optionId}>
+                  <option key={eachType.optionId} value={eachType.optionId}>
                     {eachType.displayText}
                   </option>
                 ))}
@@ -186,12 +190,12 @@ class MoneyManager extends Component {
             </form>
             <div className="history card">
               <h1 className="card-heading">History</h1>
-              <div className="history-heading-section">
-                <p>Title</p>
-                <p>Amount</p>
-                <p>Type</p>
-              </div>
               <ul className="transaction-items-list">
+                <li className="history-heading-section">
+                  <p className="heading-cell">Title</p>
+                  <p className="heading-cell">Amount</p>
+                  <p className="heading-cell">Type</p>
+                </li>
                 {transactionsList.map(eachTransaction => (
                   <TransactionItem
                     key={eachTransaction.id}
